@@ -21,8 +21,19 @@ namespace EndToEndMailCourse._07
 
             var companySelectElement = driver.FindElement(By.Id("companySelect"));
             var carSelectElement = driver.FindElement(By.Id("carSelect"));
-
+            
             #region TEST CODE
+            var companySelect = new SelectElement(companySelectElement);
+            var carSelect = new SelectElement(carSelectElement);
+            var waiter = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            companySelect.SelectByIndex(1);
+            waiter.
+                Until(ExpectedConditions.ElementToBeClickable(carSelectElement));
+            carSelect.SelectByIndex(3);
+            waiter.
+                Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"results\"]/a[5]")));
+
 
             #endregion
 
